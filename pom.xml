@@ -15,22 +15,32 @@
         <junit.version>4.12</junit.version>
         <mockito-core.version>2.13.0</mockito-core.version>
         <mockito-all.version>1.10.19</mockito-all.version>
+        <mockito.group>org.mockito</mockito.group>
         <aspectj.version>1.8.13</aspectj.version>
         <cglib.version>3.2.6</cglib.version>
     </properties>
 
 
     <dependencies>
+        <!--SPRING-->
         <dependency>
             <groupId>${spring.group}</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>${spring.group}</groupId>
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>${spring.group}</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -51,13 +61,13 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mockito</groupId>
+            <groupId>${mockito.group}</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
+            <groupId>${mockito.group}</groupId>
             <artifactId>mockito-all</artifactId>
             <version>${mockito-all.version}</version>
             <scope>test</scope>
