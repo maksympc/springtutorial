@@ -7,7 +7,15 @@
     <groupId>com.spring</groupId>
     <artifactId>springtutorial</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+
+    <modules>
+        <module>knights</module>
+        <module>idols</module>
+        <module>idolsaop</module>
+        <module>idolsqualifiers</module>
+    </modules>
+
+    <packaging>pom</packaging>
 
     <properties>
         <spring.group>org.springframework</spring.group>
@@ -19,7 +27,6 @@
         <aspectj.version>1.8.13</aspectj.version>
         <cglib.version>3.2.6</cglib.version>
     </properties>
-
 
     <dependencies>
         <!--SPRING-->
@@ -48,6 +55,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
             <version>${cglib.version}</version>
@@ -66,13 +79,13 @@
             <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>${mockito.group}</groupId>
             <artifactId>mockito-all</artifactId>
             <version>${mockito-all.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
