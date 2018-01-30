@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// Configuration for the root project
+// -----------------------------------------------------------------------------
+description = 'spitter'
+
+apply plugin: 'base'
+apply plugin: 'idea'
+
+allprojects {
+    group 'com.springtutorial'
+    version '1.0'
+
+    // default set of maven repositories to be used when resolving dependencies
+    repositories {
+        mavenCentral()
+        maven { url 'http://maven.springframework.org/release/' }
+        maven { url 'http://maven.springframework.org/milestone/' }
+        maven { url 'http://maven.springframework.org/snapshot/' }
+    }
+}
+
+configure(subprojects) {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    // set up dedicated directories for jars and source jars.
+    // this makes it easier when putting together the distribution
+//    libsBinDir = new File(libsDir, 'bin')
+//    libsSrcDir = new File(libsDir, 'src')
+
+
+    def junitVersion = '4.12'
+    def mockitoVersion = '1.10.19'
+    def springVersion = '5.0.3.RELEASE'
+    def log4jVersion = '1.2.17'
+
+    sourceSets {
+        test {
+            resources {
+                srcDirs = ['src/test/resources', 'src/test/java']
+            }
+        }
+    }
+
+    configurations {
+        provided { transitive = false }
+    }
+
+    sourceSets.main.compileClasspath += configurations.provided
+    sourceSets.test.compileClasspath += configurations.provided
+    sourceSets.test.runtimeClasspath += configurations.provided
+
+    dependencies {
+        compile 'javax.inject:javax.inject:1'
+        compile "log4j:log4j:$log4jVersion"
+        testCompile "junit:junit:$junitVersion"
+        testCompile "org.mockito:mockito-all:$mockitoVersion"
+        testCompile "org.springframework:spring-test:$springVersion"
+    }
+
+    [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:all']
+
+}
+
+project('spitter-domain-plain') {
+    description = 'Spitter Domain'
+    dependencies {}
+}

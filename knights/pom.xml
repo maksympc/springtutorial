@@ -5,7 +5,7 @@
 
     <parent>
         <artifactId>springtutorial</artifactId>
-        <groupId>com.spring</groupId>
+        <groupId>com.springtutorial</groupId>
         <version>1.0</version>
     </parent>
 
