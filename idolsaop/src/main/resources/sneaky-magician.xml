@@ -7,10 +7,8 @@
      http://www.springframework.org/schema/aop
      http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="volunteer"
-          class="com.springtutorial.idols.Volunteer"/>
-    <bean id="magician"
-          class="com.springtutorial.idols.Magician"/>
+    <bean id="volunteer" class="com.springtutorial.idols.Volunteer"/>
+    <bean id="magician" class="com.springtutorial.idols.Magician"/>
 
     <!--<start id="mindreading_aspect"/>-->
     <aop:config>

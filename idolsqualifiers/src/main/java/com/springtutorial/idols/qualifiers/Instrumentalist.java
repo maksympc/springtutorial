@@ -6,10 +6,11 @@ import com.springtutorial.idols.PerformanceException;
 import com.springtutorial.idols.Performer;
 import com.springtutorial.idols.Strummed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-
 @Component
+@Qualifier("eddie")
 public class Instrumentalist implements Performer {
     public void perform() throws PerformanceException {
         getInstrument().play();

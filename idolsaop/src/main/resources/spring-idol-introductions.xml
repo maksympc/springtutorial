@@ -7,16 +7,14 @@
      http://www.springframework.org/schema/aop
      http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="eddie"
-          class="com.springtutorial.idols.Instrumentalist">
+    <bean id="eddie" class="com.springtutorial.idols.Instrumentalist">
         <property name="instrument">
             <bean class="com.springtutorial.idols.Guitar"/>
         </property>
     </bean>
 
     <!--<start id="audience_bean"/>-->
-    <bean id="audience"
-          class="com.springtutorial.idols.Audience"/>
+    <bean id="audience" class="com.springtutorial.idols.Audience"/>
     <!--<end id="audience_bean"/>-->
 
     <!--<start id="audience_aspect"/>-->
@@ -47,23 +45,6 @@
                     default-impl="com.springtutorial.idols.GraciousContestant"
             />
         </aop:aspect>
-        <!--<end id="contestant_introduction"/>-->
-
-        <!--
-    <start id="delegate_ref"/>
-    <aop:declare-parents
-      types-matching="com.springinaction.springidol.Performer+"
-      implement-interface="com.springinaction.springidol.Contestant"
-      delegate-ref="contestantDelegate"
-      />
-        <end id="delegate_ref"/>
-
-    <start id="contestant_delegate"/>
-    <bean id="contestantDelegate"
-        class="com.springinaction.springidol.GraciousContestant" />
-        <end id="contestant_delegate"/>
-
-         -->
 
     </aop:config>
     <!--<end id="audience_aspect" />-->
