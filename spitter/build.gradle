@@ -24,6 +24,7 @@ def mockitoVersion = '1.10.19'
 def springVersion = '3.0.7.RELEASE'
 def log4jVersion = '1.2.17'
 def jodaVersion = '2.9.9'
+def h2DBVersion = '1.4.196'
 
 configure(subprojects) {
     apply plugin: 'java'
@@ -102,6 +103,21 @@ project('spitter-persistence-jdbc-template') {
         compile "joda-time:joda-time:$jodaVersion"
         compile project(':spitter-domain-plain')
         compile project(':spitter-persistence-common')
-        testCompile "com.h2database:h2:1.4.196"
+        testCompile "com.h2database:h2:$h2DBVersion"
+    }
+}
+
+project('spitter-persistence-hibernate-contextual-sessions') {
+    description = 'Spitter Persistence (Hibernate Contextual Sessions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-orm:$springVersion"
+        compile "org.hibernate:hibernate-core:3.3.2.GA"
+        compile "org.hibernate:hibernate-annotations:3.4.0.GA"
+        compile "javassist:javassist:3.9.0.GA"
+        compile "cglib:cglib-nodep:2.2"
+        testCompile "com.h2database:h2:$h2DBVersion"
+        testCompile "org.slf4j:slf4j-api:1.6.1"
     }
 }
