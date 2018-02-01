@@ -19,6 +19,12 @@ allprojects {
     }
 }
 
+def junitVersion = '4.12'
+def mockitoVersion = '1.10.19'
+def springVersion = '3.0.7.RELEASE'
+def log4jVersion = '1.2.17'
+def jodaVersion = '2.9.9'
+
 configure(subprojects) {
     apply plugin: 'java'
     apply plugin: 'maven'
@@ -29,12 +35,6 @@ configure(subprojects) {
     // this makes it easier when putting together the distribution
 //    libsBinDir = new File(libsDir, 'bin')
 //    libsSrcDir = new File(libsDir, 'src')
-
-
-    def junitVersion = '4.12'
-    def mockitoVersion = '1.10.19'
-    def springVersion = '5.0.3.RELEASE'
-    def log4jVersion = '1.2.17'
 
     sourceSets {
         test {
@@ -67,4 +67,41 @@ configure(subprojects) {
 project('spitter-domain-plain') {
     description = 'Spitter Domain'
     dependencies {}
+}
+
+project('spitter-domain-jpa') {
+    description = 'Spitter Domain JPA-Annotated'
+    dependencies {
+        compile "javax.persistence:persistence-api:1.0"
+        compile "javax.validation:validation-api:2.0.1.Final"
+        compile "commons-lang:commons-lang:2.6"
+        compile "org.codehaus.jackson:jackson-core-asl:1.9.13"
+        compile "org.springframework:spring-context:$springVersion"
+    }
+}
+
+project('spitter-persistence-common') {
+    description = 'Spitter Persistence Commons'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+    }
+}
+
+project('spitter-persistence-jdbc-conventional') {
+    description = 'Spitter Persistence (Traditional)'
+    dependencies {
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+    }
+}
+
+project('spitter-persistence-jdbc-template') {
+    description = 'Spitter Persistence (JDBC Template)'
+    dependencies {
+        compile "org.springframework:spring-jdbc:$springVersion"
+        compile "joda-time:joda-time:$jodaVersion"
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+        testCompile "com.h2database:h2:1.4.196"
+    }
 }
