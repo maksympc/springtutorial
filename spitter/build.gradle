@@ -138,3 +138,10 @@ project('spitter-persistence-jpa') {
         compile "org.slf4j:slf4j-nop:1.5.8"
     }
 }
+
+project('spitter-service-common') {
+    description = 'Spitter Service Commons'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+    }
+}

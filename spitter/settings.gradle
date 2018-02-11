@@ -7,4 +7,5 @@ include 'spitter-persistence-jdbc-conventional'
 include 'spitter-persistence-jdbc-template'
 include 'spitter-persistence-hibernate-contextual-sessions'
 include 'spitter-persistence-jpa'
+include 'spitter-service-common'
 
