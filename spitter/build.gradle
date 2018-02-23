@@ -156,3 +156,14 @@ project('spitter-service-declarative-tx') {
         testCompile "org.easymock:easymock:3.0"
     }
 }
+
+project('spitter-service-annotation-tx') {
+    description = 'Spitter Service (Annotated Transactions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-tx:$springVersion"
+        testCompile "org.easymock:easymock:3.0"
+    }
+}
